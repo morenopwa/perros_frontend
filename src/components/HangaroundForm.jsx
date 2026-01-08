@@ -27,28 +27,38 @@ export function HangaroundForm() {
 
   // 3. Función para enviar los datos al Backend en Render
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    // Cambia esta URL por la que te dé Render cuando subas el backend
-    const backendUrl = "https://tu-app-en-render.onrender.com/send-email";
+  e.preventDefault();
 
-    try {
-      const response = await fetch(backendUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        alert("¡Solicitud enviada con éxito! La directiva se pondrá en contacto.");
-      } else {
-        alert("Hubo un problema al enviar. Inténtalo más tarde.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("No se pudo conectar con el servidor.");
-    }
+  const data = {
+    nombre: e.target.nombre.value,
+    edad: e.target.edad.value,
+    apodo: e.target.apodo.value,
+    email: e.target.email.value,
+    celular: e.target.celular.value,
+    pais: e.target.pais.value,
+    ciudad: e.target.ciudad.value,
+    redes: e.target.redes.value,
+    moto: e.target.moto.value,
+    cc: e.target.cc.value,
+    otroGrupo: e.target.otroGrupo.value,
   };
+
+  try {
+    const res = await fetch("https://TU_BACKEND_URL/api/form", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+    if (result.success) alert("Formulario enviado correctamente 🔥");
+    else alert("Error enviando formulario");
+  } catch (err) {
+    console.error(err);
+    alert("Error enviando formulario");
+  }
+};
+
 
   return (
     <div className="form-container">
