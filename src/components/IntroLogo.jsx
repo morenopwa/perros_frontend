@@ -1,71 +1,35 @@
-import { useEffect, useRef, useState } from "react";
-import Lottie from "lottie-react";
-
-import animationData from "../assets/lottie/intro.json";
+import { useEffect } from "react";
+import video from "../assets/video/videologoperro.mp4";
 import rugido from "../assets/audio/rugido.mp3";
+import "../styles/global.css";
 
-export function IntroLogo({ onFinish }) {
-  const audioRef = useRef(null);
-  const [canPlay, setCanPlay] = useState(false);
-
+export default function IntroLogo({ onFinish }) {
   useEffect(() => {
-    const seen = sessionStorage.getItem("introSeen");
+    const audio = new Audio(rugido);
+    audio.volume = 0.9;
 
-    if (seen) {
+    // Intentamos reproducir el audio
+    audio.play().catch(() => {
+      console.warn("🔇 Autoplay de audio bloqueado");
+    });
+
+    // Duración de la intro (ajústala a tu video)
+    const timer = setTimeout(() => {
       onFinish();
-    } else {
-      sessionStorage.setItem("introSeen", "true");
-      setCanPlay(true);
-    }
-  }, [onFinish]);
+    }, 4000);
 
-  const handleUserInteraction = () => {
-    if (audioRef.current) {
-      audioRef.current.volume = 0.8;
-      audioRef.current.currentTime = 0;
-      audioRef.current.play();
-    }
-  };
-
-  const handleComplete = () => {
-    onFinish();
-  };
-
-  if (!canPlay) return null;
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <div style={styles.overlay} onClick={handleUserInteraction}>
-      <audio ref={audioRef} src={rugido} preload="auto" />
-
-      <Lottie
-        animationData={animationData}
-        loop={false}
-        autoplay
-        onComplete={handleComplete}
-        style={{ width: 320, maxWidth: "80vw" }}
+    <div className="intro-video-container">
+      <video
+        src={video}
+        autoPlay
+        muted
+        playsInline
+        className="intro-video"
       />
-
-      <p style={styles.text}>TOCA PARA DESATAR A LA BESTIA</p>
     </div>
   );
 }
-
-const styles = {
-  overlay: {
-    position: "fixed",
-    inset: 0,
-    backgroundColor: "#000",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 9999,
-    cursor: "pointer",
-  },
-  text: {
-    marginTop: 20,
-    fontSize: 12,
-    letterSpacing: 2,
-    color: "#aaa",
-  },
-};
