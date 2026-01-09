@@ -1,49 +1,91 @@
 .form-container {
   min-height: 100vh;
-  background: linear-gradient(180deg, #000, #1a0000);
+  background: radial-gradient(circle at top, #111, #000);
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white;
   padding: 40px 20px;
+  color: #eee;
 }
 
-.form-logo {
-  width: 150px;
+.parche-logo {
+  width: 180px;
   margin-bottom: 20px;
-  animation: pulse 2s infinite;
+  filter: drop-shadow(0 0 20px rgba(255,0,0,0.4));
 }
 
-form {
-  max-width: 420px;
+h1 {
+  letter-spacing: 4px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.form {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  max-width: 520px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+section h2 {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 5px;
+  letter-spacing: 2px;
 }
 
 input {
+  width: 100%;
+  background: #000;
+  border: 1px solid #333;
   padding: 12px;
-  background: #111;
-  border: 1px solid #500;
-  color: white;
-  border-radius: 6px;
+  margin-bottom: 12px;
+  color: #eee;
+}
+
+input:focus {
+  outline: none;
+  border-color: #c00;
+}
+
+.radio-group {
+  margin: 10px 0 15px;
+}
+
+.radio-group p {
+  margin-bottom: 8px;
+}
+
+.radio-group label {
+  margin-right: 20px;
+}
+
+.legal {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 30px;
+  line-height: 1.5;
 }
 
 button {
+  width: 100%;
   padding: 14px;
-  background: crimson;
+  background: linear-gradient(90deg, #900, #c00);
   border: none;
+  color: #fff;
   font-weight: bold;
+  letter-spacing: 3px;
   cursor: pointer;
 }
 
 button:hover {
-  background: darkred;
-}
-
-@keyframes pulse {
-  0% { filter: drop-shadow(0 0 5px red); }
-  50% { filter: drop-shadow(0 0 25px red); }
-  100% { filter: drop-shadow(0 0 5px red); }
+  background: linear-gradient(90deg, #c00, #f00);
 }
