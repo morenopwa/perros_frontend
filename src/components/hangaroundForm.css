@@ -1,91 +1,49 @@
 .form-container {
   min-height: 100vh;
-  background: radial-gradient(circle at top, #111, #000);
+  background: linear-gradient(180deg, #000, #1a0000);
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: white;
   padding: 40px 20px;
-  color: #eee;
 }
 
-.parche-logo {
-  width: 180px;
+.form-logo {
+  width: 150px;
   margin-bottom: 20px;
-  filter: drop-shadow(0 0 20px rgba(255,0,0,0.4));
+  animation: pulse 2s infinite;
 }
 
-h1 {
-  letter-spacing: 4px;
-  margin-bottom: 5px;
-}
-
-.subtitle {
-  font-size: 14px;
-  color: #aaa;
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-.form {
+form {
+  max-width: 420px;
   width: 100%;
-  max-width: 520px;
-}
-
-section {
-  margin-bottom: 40px;
-}
-
-section h2 {
-  margin-bottom: 15px;
-  border-bottom: 1px solid #333;
-  padding-bottom: 5px;
-  letter-spacing: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 input {
-  width: 100%;
-  background: #000;
-  border: 1px solid #333;
   padding: 12px;
-  margin-bottom: 12px;
-  color: #eee;
-}
-
-input:focus {
-  outline: none;
-  border-color: #c00;
-}
-
-.radio-group {
-  margin: 10px 0 15px;
-}
-
-.radio-group p {
-  margin-bottom: 8px;
-}
-
-.radio-group label {
-  margin-right: 20px;
-}
-
-.legal {
-  font-size: 12px;
-  color: #888;
-  margin-bottom: 30px;
-  line-height: 1.5;
+  background: #111;
+  border: 1px solid #500;
+  color: white;
+  border-radius: 6px;
 }
 
 button {
-  width: 100%;
   padding: 14px;
-  background: linear-gradient(90deg, #900, #c00);
+  background: crimson;
   border: none;
-  color: #fff;
   font-weight: bold;
-  letter-spacing: 3px;
   cursor: pointer;
 }
 
 button:hover {
-  background: linear-gradient(90deg, #c00, #f00);
+  background: darkred;
+}
+
+@keyframes pulse {
+  0% { filter: drop-shadow(0 0 5px red); }
+  50% { filter: drop-shadow(0 0 25px red); }
+  100% { filter: drop-shadow(0 0 5px red); }
 }
