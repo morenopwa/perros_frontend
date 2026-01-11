@@ -1,35 +1,17 @@
-import { useEffect } from "react";
-import video from "../assets/video/videologoperro.mp4";
-import rugido from "../assets/audio/rugido.mp3";
-import "../styles/global.css";
+import videoSrc from "../assets/video/videologoperro.mp4";
 
-export default function IntroLogo({ onFinish }) {
-  useEffect(() => {
-    const audio = new Audio(rugido);
-    audio.volume = 0.9;
-
-    // Intentamos reproducir el audio
-    audio.play().catch(() => {
-      console.warn("🔇 Autoplay de audio bloqueado");
-    });
-
-    // Duración de la intro (ajústala a tu video)
-    const timer = setTimeout(() => {
-      onFinish();
-    }, 4000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
+export default function IntroLogo({ onFinish, isBackground }) {
   return (
-    <div className="intro-video-container">
+    <div className={`intro-video-container ${isBackground ? "video-as-bg" : ""}`}>
       <video
-        src={video}
+        src={videoSrc}
         autoPlay
         muted
         playsInline
+        onEnded={onFinish} // El formulario aparece justo cuando acaba el video
         className="intro-video"
       />
+      <div className="video-overlay"></div>
     </div>
   );
 }

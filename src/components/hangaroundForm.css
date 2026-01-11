@@ -1,49 +1,138 @@
-.form-container {
+/* Reset básico para evitar que los inputs se salgan */
+* {
+  box-sizing: border-box;
+}
+
+.form-wrapper {
   min-height: 100vh;
-  background: linear-gradient(180deg, #000, #1a0000);
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  color: white;
+  background: radial-gradient(circle, #15110e 0%, #050505 100%);
   padding: 40px 20px;
 }
 
-.form-logo {
-  width: 150px;
-  margin-bottom: 20px;
-  animation: pulse 2s infinite;
+.form-card {
+  background: rgba(18, 15, 13, 0.98);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(194, 153, 122, 0.2);
+  padding: 60px 50px;
+  width: 100%;
+  max-width: 650px; /* Un poco más ancho por los nuevos campos */
+  text-align: center;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
 }
 
-form {
-  max-width: 420px;
+.form-logo {
+  width: 220px;
+  margin-bottom: 30px;
+  filter: drop-shadow(0 0 15px rgba(139, 94, 60, 0.3));
+}
+
+.form-header h2 {
+  color: #c2997a;
+  font-size: 1.8rem;
+  letter-spacing: 4px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.form-header p {
+  color: #8b5e3c;
+  font-weight: 800;
+  letter-spacing: 7px;
+  font-size: 0.85rem;
+  margin-bottom: 40px;
+}
+
+/* Contenedor del formulario */
+.epic-form {
   width: 100%;
+}
+
+/* Filas simétricas */
+.input-row {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  gap: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 input {
-  padding: 12px;
-  background: #111;
-  border: 1px solid #500;
-  color: white;
-  border-radius: 6px;
+  width: 100%; /* Ahora sí se mantendrá dentro por el box-sizing */
+  background: #0a0a0a !important;
+  border: 1px solid #2d251f;
+  padding: 16px;
+  color: #eee;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  border-radius: 2px;
 }
 
-button {
-  padding: 14px;
-  background: crimson;
-  border: none;
-  font-weight: bold;
+input:focus {
+  outline: none;
+  border-color: #c2997a;
+  background: #14110f !important;
+  box-shadow: inset 0 0 5px rgba(194, 153, 122, 0.2);
+}
+
+/* Botón Tecnológico Corregido */
+.tech-button {
+  position: relative;
+  width: 100%;
+  padding: 22px;
+  background: #1a1512;
+  color: #c2997a;
+  border: 1px solid #3d2f26;
+  font-weight: 900;
+  letter-spacing: 4px;
   cursor: pointer;
+  overflow: hidden;
+  transition: 0.4s;
+  text-transform: uppercase;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-button:hover {
-  background: darkred;
+.tech-button:hover:not(:disabled) {
+  color: #ffffff;
+  border-color: #c2997a;
+  background: #251d18;
 }
 
-@keyframes pulse {
-  0% { filter: drop-shadow(0 0 5px red); }
-  50% { filter: drop-shadow(0 0 25px red); }
-  100% { filter: drop-shadow(0 0 5px red); }
+.btn-scanner {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(194, 153, 122, 0.3), transparent);
+  transition: 0.6s;
+}
+
+.tech-button:hover .btn-scanner {
+  left: 100%;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form-card {
+    padding: 40px 20px;
+  }
+  .input-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .form-logo {
+    width: 180px;
+  }
 }
