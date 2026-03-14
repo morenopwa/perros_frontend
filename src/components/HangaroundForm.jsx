@@ -36,7 +36,7 @@ export default function HangaroundForm() {
 
         <header className="form-header">
           <h2>REGISTRO HANGAROUND</h2>
-          <p>PERROS 17 MOTO GROUP</p>
+          <p>PERROS 17 MOTORCYCLE GROUP</p>
         </header>
 
         <form className="epic-form" onSubmit={handleSubmit}>
@@ -76,7 +76,7 @@ export default function HangaroundForm() {
 
           <button type="submit" className="tech-button" disabled={loading}>
             <span className="btn-text">
-              {loading ? "PROCESANDO..." : "UNIRSE A LA MANADA"}
+              {loading ? "PROCESANDO..." : "UNIRSE A "}
             </span>
             <div className="btn-scanner"></div>
           </button>

@@ -1,6 +1,7 @@
 /* Reset básico para evitar que los inputs se salgan */
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 .form-wrapper {
